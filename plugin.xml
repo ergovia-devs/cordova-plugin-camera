@@ -135,9 +135,13 @@
 
          <header-file src="src/ios/CDVCamera.h" />
          <source-file src="src/ios/CDVCamera.m" />
+         <header-file src="src/ios/CDVCameraPicker+Overlay.h" />
+         <source-file src="src/ios/CDVCameraPicker+Overlay.m" />
          <header-file src="src/ios/CDVJpegHeaderWriter.h" />
          <source-file src="src/ios/CDVJpegHeaderWriter.m" />
          <header-file src="src/ios/CDVExif.h" />
+         <resource-file src="portrait_overlay.png" />
+         <resource-file src="portrait_overlay@2x.png" />
          <framework src="ImageIO.framework" weak="true" />
          <framework src="CoreLocation.framework" />
          <framework src="CoreGraphics.framework" />
