@@ -20,6 +20,7 @@
 #import "CDVCamera.h"
 #import "CDVJpegHeaderWriter.h"
 #import "UIImage+CropScaleOrientation.h"
+#import "CDVCameraPicker+Overlay.h"
 #import <Cordova/NSArray+Comparisons.h>
 #import <Cordova/NSData+Base64.h>
 #import <Cordova/NSDictionary+Extensions.h>
@@ -137,6 +138,7 @@ static NSString* toBase64(NSData* data) {
         pictureOptions.cropToSize = NO;
         
         BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:pictureOptions.sourceType];
+
         if (!hasCamera) {
             NSLog(@"Camera.getPicture: source type %lu not available.", (unsigned long)pictureOptions.sourceType);
             CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"No camera available"];
@@ -167,6 +169,14 @@ static NSString* toBase64(NSData* data) {
             weakSelf.hasPendingOperation = NO;
 
         } else {
+
+            if ([cameraPicker.showOverlay intValue] == 1) {
+                UIImageView *overlay = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];
+                overlay.contentMode = UIViewContentModeScaleAspectFill;
+                overlay.image = [UIImage imageNamed:@"portrait_overlay.png"];
+                cameraPicker.cameraOverlayView = overlay;
+            }
+
             [weakSelf.viewController presentViewController:cameraPicker animated:YES completion:^{
                 weakSelf.hasPendingOperation = NO;
             }];
