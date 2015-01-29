@@ -19,6 +19,7 @@
 
 #import "CDVCamera.h"
 #import "CDVJpegHeaderWriter.h"
+#import "CDVCameraPicker+Overlay.h"
 #import <Cordova/NSArray+Comparisons.h>
 #import <Cordova/NSData+Base64.h>
 #import <Cordova/NSDictionary+Extensions.h>
@@ -84,6 +85,7 @@ static NSSet* org_apache_cordova_validArrowDirections;
 
     self.hasPendingOperation = YES;
 
+<<<<<<< HEAD
     NSString* sourceTypeString = [arguments objectAtIndex:2];
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera; // default
     if (sourceTypeString != nil) {
@@ -145,6 +147,14 @@ static NSSet* org_apache_cordova_validArrowDirections;
         // We can only set the camera device if we're actually using the camera.
         NSNumber* cameraDirection = [command argumentAtIndex:11 withDefault:[NSNumber numberWithInteger:UIImagePickerControllerCameraDeviceRear]];
         cameraPicker.cameraDevice = (UIImagePickerControllerCameraDevice)[cameraDirection intValue];
+
+        if ([cameraPicker.showOverlay intValue] == 1) {
+        	UIImageView *overlay = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];
+            overlay.contentMode = UIViewContentModeScaleAspectFill;
+            overlay.image = [UIImage imageNamed:@"portrait_overlay.png"];
+            cameraPicker.cameraOverlayView = overlay;
+        }
+
     } else if (mediaType == MediaTypeAll) {
         cameraPicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:sourceType];
     } else {
@@ -155,7 +165,7 @@ static NSSet* org_apache_cordova_validArrowDirections;
     if ([self popoverSupported] && (sourceType != UIImagePickerControllerSourceTypeCamera)) {
         if (cameraPicker.popoverController == nil) {
             cameraPicker.popoverController = [[NSClassFromString(@"UIPopoverController")alloc] initWithContentViewController:cameraPicker];
-        }
+		}
         NSDictionary* options = [command.arguments objectAtIndex:10 withDefault:nil];
         [self displayPopover:options];
     } else {
