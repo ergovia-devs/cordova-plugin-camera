@@ -85,7 +85,6 @@ static NSSet* org_apache_cordova_validArrowDirections;
 
     self.hasPendingOperation = YES;
 
-<<<<<<< HEAD
     NSString* sourceTypeString = [arguments objectAtIndex:2];
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera; // default
     if (sourceTypeString != nil) {
