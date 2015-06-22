@@ -212,6 +212,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
         this.imageUri = Uri.fromFile(photo);
 
         if (this.cordova != null) {
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             this.cordova.startActivityForResult((CordovaPlugin) this, intent, (CAMERA + 1) * 16 + returnType + 1);
         }
 //        else
@@ -286,6 +287,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
           intent.addCategory(Intent.CATEGORY_OPENABLE);
         }
         if (this.cordova != null) {
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             this.cordova.startActivityForResult((CordovaPlugin) this, Intent.createChooser(intent,
                     new String(title)), (srcType + 1) * 16 + returnType + 1);
         }
@@ -321,6 +323,7 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
       // start the activity - we handle returning in onActivityResult
 
       if (this.cordova != null) {
+        cropIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         this.cordova.startActivityForResult((CordovaPlugin) this,
             cropIntent, CROP_CAMERA);
       }
