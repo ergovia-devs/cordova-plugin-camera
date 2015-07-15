@@ -53,18 +53,18 @@
                 android:layout_height="wrap_content" >
 
             <Button
-                    android:id="@+id/okButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="Übernehmen" />
-
-            <Button
                     android:id="@+id/cancelButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Verwerfen" />
+                    android:text="Wiederholen" />
+
+            <Button
+                    android:id="@+id/okButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="Foto benutzen" />
 
         </LinearLayout>
     </RelativeLayout>
