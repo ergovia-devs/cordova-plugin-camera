@@ -78,7 +78,8 @@
             </activity>
         </config-file>
 
-        <source-file src="src/android/CameraActivity.java" target-dir="src/org/apache/cordova/nativecameraplugin" />
+        <source-file src="src/android/CameraActivity.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/nativecameraplugin.xml" target-dir="res/layout" />
         <source-file src="src/android/CameraLauncher.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/FileHelper.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/ExifHelper.java" target-dir="src/org/apache/cordova/camera" />
