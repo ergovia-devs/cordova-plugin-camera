@@ -60,9 +60,10 @@ cameraExport.getPicture = function(successCallback, errorCallback, options) {
     var popoverOptions = getValue(options.popoverOptions, null);
     var cameraDirection = getValue(options.cameraDirection, Camera.Direction.BACK);
     var showOverlay = getValue(options.showOverlay, false);
+    var ergoviaSpecialPick = !!options.ergoviaSpecialPick;
 
     var args = [quality, destinationType, sourceType, targetWidth, targetHeight, encodingType,
-                mediaType, allowEdit, correctOrientation, saveToPhotoAlbum, popoverOptions, cameraDirection, showOverlay];
+                mediaType, allowEdit, correctOrientation, saveToPhotoAlbum, popoverOptions, cameraDirection, showOverlay, ergoviaSpecialPick];
 
     exec(successCallback, errorCallback, "Camera", "takePicture", args);
     // XXX: commented out
