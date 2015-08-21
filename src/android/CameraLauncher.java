@@ -293,8 +293,12 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
         }
         if (this.cordova != null) {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            this.cordova.startActivityForResult((CordovaPlugin) this, Intent.createChooser(intent,
-                    new String(title)), (srcType + 1) * 16 + returnType + 1);
+            if(this.ergoviaSpecialPick) {
+                this.cordova.startActivityForResult((CordovaPlugin) this, intent, (srcType + 1) * 16 + returnType + 1);
+            } else {
+                this.cordova.startActivityForResult((CordovaPlugin) this, Intent.createChooser(intent,
+                                            new String(title)), (srcType + 1) * 16 + returnType + 1);
+            }
         }
     }
 
