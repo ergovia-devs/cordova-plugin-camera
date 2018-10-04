@@ -236,6 +236,10 @@ private String getTempDirectoryPath() {
  * @param encodingType      JPEG or PNG
  */
 public void callTakePicture(int returnType, int encodingType) {
+
+    StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+    StrictMode.setVmPolicy(builder.build());
+
     boolean saveAlbumPermission = PermissionHelper.hasPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
     boolean takePicturePermission = PermissionHelper.hasPermission(this, Manifest.permission.CAMERA);
 
